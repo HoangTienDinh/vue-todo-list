@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <Todos v-bind:todos='todos'/>
+    <Todos v-bind:todos="todos" />
+    <TodoItem />
   </div>
 </template>
 
 <script>
 import Todos from "./components/Todos";
+import TodoItem from "./components/TodoItem";
 
 export default {
   name: "App",
   components: {
     Todos,
+    TodoItem,
   },
   data() {
     return {
