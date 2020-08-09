@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit="addTodo">
+    <form @submit.prevent="addTodo">
       <input
         type="text"
         v-model="title"
@@ -13,9 +13,6 @@
 </template>
 
 <script>
-import uuid from "uuid";
-
-
 export default {
   name: "AddTodo",
   data() {
@@ -24,16 +21,14 @@ export default {
     };
   },
   methods: {
-    addTodo(e) {
-      e.preventDefault();
+    addTodo() {
       const newTodo = {
-        id: uuid.v4(),
         title: this.title,
         completed: false,
       };
-      //   Send up to parent
+      // Send up to parent
       this.$emit("add-todo", newTodo);
-      this.title = '';
+      this.title = "";
     },
   },
 };
@@ -43,12 +38,10 @@ export default {
 form {
   display: flex;
 }
-
 input[type="text"] {
   flex: 10;
   padding: 5px;
 }
-
 input[type="submit"] {
   flex: 2;
 }
